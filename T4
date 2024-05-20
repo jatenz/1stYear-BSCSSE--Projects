@@ -1,0 +1,68 @@
+#include <iostream>
+#include "Data.h"
+using namespace std;
+
+template <typename T>
+
+Stack<T>::Stack() (int size){
+    n = size;
+    a = new T[n];
+    top = -1;
+}
+
+void Stack<T>::push(T element){
+    if (top == n - 1){
+        cout << "Stack is full\n";
+    }else{
+        ++top;
+        a[top] = element;
+    }
+}
+
+void Stack<T>::pop(T &element){
+	if (top == NULL){
+		cout << "The stack is empty\n";
+	}else{
+		element = a[top];
+		top--;		
+	}
+}
+
+void Stack<T>::display(T element){
+	while (!top){
+		cout << a;
+	}
+}
+
+void Stack<T>::operations(){
+	int ch;
+	while(true) {
+		cout << "\nStack Operations Menu\n1- Push an element\n2- Pop\n3-Display the elements\n4- Exit\nSelect an operation: ";
+		cin >> ch;
+		switch(ch) {
+			case 1: {
+				T element;
+				cout << "Enter the element to push: ";
+				cin >> element;
+				push(element);
+				break;
+			}
+			case 2: {
+				T val = pop();
+				if(val != -1) {
+					cout << "Popped element: " << val << endl;
+					}
+				break;
+				}
+			case 3: {
+				display();
+				break;
+			}
+			case 4: {
+				exit(0);
+			}
+			default: {
+				cout << "Invalid choice.\n";
+			}
+	}
+}
